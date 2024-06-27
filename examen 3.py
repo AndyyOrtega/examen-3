@@ -46,6 +46,9 @@ def opcion1():
         print()
         break
 
+def opcion2():
+    print(tabulate(datos, headers=['Nombre', 'Dirección', 'Sector', 'Cil. 5kg', 'Cil. 15kg', 'Cil. 45kg']))
+
 #codigo principal
 datos = []
 sectores = ['Concón', 'Reñaca', 'Forestal', 'Caleta Higuerillas', 'Manzanar']
@@ -59,3 +62,8 @@ while True:
         break
     elif op == "1":
         opcion1()
+    elif op == "2":
+        if len(datos) == 0:
+            print("No se han ingresado pedidos")
+        else:
+            opcion2()
