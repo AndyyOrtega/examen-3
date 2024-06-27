@@ -10,6 +10,42 @@ def mostarmenu():
     4. Salir del programa
     ''')
 
+def opcion1():
+    #Por ahora me aseguro solo si ingresó algo para validar, si no ingresó nada, hago que ingrese todo de nuevo. Finalmente guardo los datos en una lista
+    while True:
+        nombre = input("Nombre y apellido: ")
+        if len(nombre) == 0:
+            print("No ingresaste nada")
+            continue
+        direccion = input("Dirección: ")
+        if len(direccion) == 0:
+            print("No ingresaste nada")
+            continue
+        comuna = input("Comuna: ")
+        if len(comuna) == 0:
+            print("No ingresaste nada")
+            continue
+        try :
+            cil5 = int(input("Cantidad cilindros de 5 kg: "))
+        except ValueError:
+            print("No ingresaste un número")
+            continue
+        try:
+            cil15 = int(input("Cantidad cilindros de 15 kg: "))
+        except ValueError:
+            print("No ingresaste un número")
+            continue
+        try:
+            cil45 = int(input("Cantidad cilindros de 45 kg: "))
+        except ValueError:
+            print("No ingresaste un número")
+            continue
+        linea = [nombre, direccion, comuna, cil5, cil15, cil45]
+        datos.append(linea)
+        print("Pedido ingresado con exito!")
+        print()
+        break
+
 #codigo principal
 datos = []
 sectores = ['Concón', 'Reñaca', 'Forestal', 'Caleta Higuerillas', 'Manzanar']
@@ -21,3 +57,5 @@ while True:
         print("Hasta luego")
         print()
         break
+    elif op == "1":
+        opcion1()
