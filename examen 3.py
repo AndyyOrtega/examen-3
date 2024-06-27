@@ -49,6 +49,21 @@ def opcion1():
 def opcion2():
     print(tabulate(datos, headers=['Nombre', 'Dirección', 'Sector', 'Cil. 5kg', 'Cil. 15kg', 'Cil. 45kg']))
 
+def opcion3(txt):
+    #Valido que la variable txt, que será el sector, sea igual al sector de algun pedido y lo guardo en imprimir
+    imprimir = []
+    for i in datos:
+        if i[2].upper() == txt.upper():
+            imprimir.append(i)
+    #si no tiene nada imprimir, no se creará ningun archivo
+    if len(imprimir) == 0:
+        print("No se han ingresado pedidos con el sector correspondiente")
+    else:
+        with open('ruta' + sector + '.txt', 'w', encoding='utf-8') as file:
+            file.write(tabulate(imprimir, headers=['Nombre', 'Dirección', 'Sector', 'Cil. 5kg', 'Cil. 15kg', 'Cil. 45kg']))
+            print("Hoja de ruta imprimida")
+            imprimir = []
+
 #codigo principal
 datos = []
 sectores = ['Concón', 'Reñaca', 'Forestal', 'Caleta Higuerillas', 'Manzanar']
@@ -67,3 +82,11 @@ while True:
             print("No se han ingresado pedidos")
         else:
             opcion2()
+    elif op == '3':
+        for i in sectores:
+            print(i)
+        print()
+        sector = input('Indique el sector para imprimir: ')
+        opcion3(sector)
+    else:
+        print("Ingrese una opción válida(1/2/3/4)")
